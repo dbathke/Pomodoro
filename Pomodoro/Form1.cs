@@ -125,11 +125,6 @@ namespace Pomodoro
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            if (currentTime == -1)
-            {
-                stageTime = myPdoro.AdvanceStage() * 60;
-                textBox2.Text = myPdoro.GetStageName();
-            }
             currentTime++;
             textBox1.Text = ToTimeString(currentTime);
             if (currentTime >= stageTime)
@@ -152,10 +147,10 @@ namespace Pomodoro
         private void newPdoro()
         {
             myPdoro = new pdoro(myTimes);
-            currentTime = -1;
-            stageTime = -1;
+            currentTime = 0;
+            stageTime = myPdoro.AdvanceStage() * 60;
             textBox2.Text = myPdoro.GetStageName();
-            textBox1.Text = "00:00";
+            textBox1.Text = ToTimeString(currentTime);
         }
         private void entirePomodoroToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -167,7 +162,7 @@ namespace Pomodoro
             settings settingsForm = new settings(myTimes);
             settingsForm.ShowDialog();
             times newTimes = settingsForm.getTimes();
-            if ((newTimes.longBreak != myTimes.longBreak) || (newTimes.shortBreak != myTimes.longBreak) || (newTimes.workTime != myTimes.workTime))
+            if (!newTimes.Equals(myTimes))
             {
                 myTimes = newTimes;
                 newPdoro();
