@@ -168,5 +168,14 @@ namespace Pomodoro
                 newPdoro();
             }
         }
+
+        private void Pomodoro_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+                ShowInTaskbar = true;
+            else
+                ShowInTaskbar = false;
+
+        }
     }
 }
