@@ -28,10 +28,12 @@ namespace Pomodoro
                 int longBreak = int.Parse(longBreakTextBox.Text);
                 int shortBreak = int.Parse(shortBreakTextBox.Text);
                 int workTime = int.Parse(workTextBox.Text);
+                int numShortBreaks = int.Parse(numShortBreaksTextBox.Text);
                 myTimes.longBreak = longBreak;
                 myTimes.shortBreak = shortBreak;
                 myTimes.workTime = workTime;
-                String timeStr = longBreak + Environment.NewLine + shortBreak + Environment.NewLine + workTime;
+                myTimes.numShortBreaks = numShortBreaks;
+                String timeStr = longBreak + Environment.NewLine + shortBreak + Environment.NewLine + workTime + Environment.NewLine + numShortBreaks;
                 String folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\pdoro";
                 try
                 {
@@ -54,7 +56,7 @@ namespace Pomodoro
             }
             catch
             {
-                MessageBox.Show(null,"All times must be integers.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(null,"All fields must be integers.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -67,11 +69,17 @@ namespace Pomodoro
             workTextBox.Text = myTimes.workTime.ToString();
             shortBreakTextBox.Text = myTimes.shortBreak.ToString();
             longBreakTextBox.Text = myTimes.longBreak.ToString();
+            numShortBreaksTextBox.Text = myTimes.numShortBreaks.ToString();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

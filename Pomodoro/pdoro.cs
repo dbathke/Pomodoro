@@ -17,9 +17,9 @@ namespace Pomodoro
         public int AdvanceStage()
         {
             stage++;
-            if (stage > 7)
+            if (stage > (myTimes.numShortBreaks * 2) - 1)
                 stage = 0;
-            if (stage == 7)
+            if (stage == (myTimes.numShortBreaks * 2) - 1)
                 return myTimes.longBreak;
             else if (stage % 2 == 0)
                 return myTimes.workTime;
@@ -28,7 +28,7 @@ namespace Pomodoro
         }
         public String GetStageName()
         {
-            if (stage == 7)
+            if (stage == (myTimes.numShortBreaks * 2) - 1)
                 return myTimes.longBreak.ToString() + " minute break.";
             else if (stage % 2 == 0)
                 return "Work for " + myTimes.workTime.ToString() + " minutes.";

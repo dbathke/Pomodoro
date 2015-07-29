@@ -16,6 +16,7 @@ namespace Pomodoro
        public int shortBreak;
        public int longBreak;
        public int workTime;
+       public int numShortBreaks;
     }
     
     public partial class Pomodoro : Form
@@ -45,6 +46,7 @@ namespace Pomodoro
             myTimes.workTime = 25;
             myTimes.shortBreak = 5;
             myTimes.longBreak = 25;
+            myTimes.numShortBreaks = 4;
         }
         private void LoadTimes()
         {
@@ -59,6 +61,7 @@ namespace Pomodoro
                         myTimes.longBreak = int.Parse(lines[0]);
                         myTimes.shortBreak = int.Parse(lines[1]);
                         myTimes.workTime = int.Parse(lines[2]);
+                        myTimes.numShortBreaks = int.Parse(lines[3]);
                     }
                     catch
                     {
